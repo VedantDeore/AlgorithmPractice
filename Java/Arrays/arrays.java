@@ -1,5 +1,5 @@
 import java.util.Arrays;
-// Explained arrrays entirely
+// Explained arrrays entirely  d
 public class ArrayDemo {
 
     public static void main(String[] args) {
