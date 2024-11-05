@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.*
 public class GreatestCommonDivisor {
 // Explanation:
 // The method calculateGCD implements the Euclidean algorithm, which repeatedly replaces the larger number with the remainder of the division until one number becomes zero. The other number is the GCD.
