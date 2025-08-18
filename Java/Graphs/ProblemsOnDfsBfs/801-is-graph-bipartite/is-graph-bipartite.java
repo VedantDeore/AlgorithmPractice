@@ -1,24 +1,17 @@
 class Solution {
-    private boolean check(int start,int V,  int adjList[][], int color[] ){
-      Queue<Integer> q = new LinkedList<Integer>();
-      q.add(start);
-
-      color[start] = 0;
-
-      while(!q.isEmpty()){
-        int node = q.peek();
-        q.remove();
-
+    private boolean dfs(int node,int currentColor,  int adjList[][], int color[] ){
+      color[node] = currentColor;
+        
         for(int neighbour : adjList[node]){
 
               if(color[neighbour] == -1){
-                color[neighbour] = 1- color[node];
-                q.add(neighbour);
+                  if(dfs(neighbour, 1-currentColor, adjList,color) == false){
+                    return false;
+                  }
               }else if(color[neighbour] == color[node]){
                 return false;
               }
         }
-      }
       return true;
     }
     public boolean isBipartite(int[][] graph) {
@@ -27,7 +20,7 @@ class Solution {
 
         for(int i=0;i<color.length;i++){
           if(color[i] == -1){
-            if(check(i, graph.length, graph,color) == false){
+            if(dfs(i,0, graph,color) == false){
               return false;
             }
           }
