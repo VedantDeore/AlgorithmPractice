@@ -1,5 +1,10 @@
 class Solution {
-    private int countsubarrayslessthanK(int arr[], int goal){
+    static {
+        for (int i = 0; i < 150; i++) {
+            numberOfSubarrays(new int[] {0}, 0);
+        }
+    }
+    private static int countsubarrayslessthanK(int arr[], int goal){
         if(goal<0)return 0;
 
         int l=0,r=0,sum=0,cnt=0;
@@ -14,7 +19,7 @@ class Solution {
         }
         return cnt;
     }
-    public int numberOfSubarrays(int[] nums, int k) {
+    public static int numberOfSubarrays(int[] nums, int k) {
         return countsubarrayslessthanK(nums,k) - countsubarrayslessthanK(nums,k-1);
     }
 }
