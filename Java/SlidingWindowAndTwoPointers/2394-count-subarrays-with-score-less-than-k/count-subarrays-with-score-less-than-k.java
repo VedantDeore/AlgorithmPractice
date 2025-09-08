@@ -5,7 +5,7 @@ class Solution {
         long sum=0,cnt=0;
         while(r<arr.length){
             sum+= (long)arr[r];
-            while(sum*(r-l+1L) >= k ){
+            while(l<=r && sum*(r-l+1L) >= k ){
                 sum-= (long)arr[l];
                 l++;
             }
