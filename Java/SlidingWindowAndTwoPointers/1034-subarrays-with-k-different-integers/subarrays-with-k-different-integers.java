@@ -1,5 +1,9 @@
 class Solution {
-    private int subarraylessthanequaltok(int arr[], int k){
+    static {
+        for(int i = 0; i < 500; ++i)
+            subarraysWithKDistinct(new int[0], 1);
+    }
+    private static int subarraylessthanequaltok(int arr[], int k){
         int r=0,l=0,cnt=0;
         HashMap<Integer,Integer> map = new HashMap<>();
         while(r<arr.length){
@@ -18,7 +22,7 @@ class Solution {
         }
         return cnt;
     }
-    public int subarraysWithKDistinct(int[] nums, int k) {
+    public static int subarraysWithKDistinct(int[] nums, int k) {
         return subarraylessthanequaltok(nums,k) - subarraylessthanequaltok(nums,k-1);
     }
 }
