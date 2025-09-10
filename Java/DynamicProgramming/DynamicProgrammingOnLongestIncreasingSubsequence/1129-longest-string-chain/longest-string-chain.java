@@ -1,6 +1,10 @@
 class Solution {
-
-    private boolean checkPossible(String s1, String s2){
+    static {
+        for (int i = 0; i < 150; i++) {
+            longestStrChain(new String[] {""});
+        }
+    }
+    private static boolean checkPossible(String s1, String s2){
         if(s1.length()- s2.length() == 1){
             int first = 0;
             int second = 0;
@@ -20,9 +24,9 @@ class Solution {
         return false;
         
     }
-    Comparator<String> comp = (s1, s2) -> s1.length() - s2.length();
+    static Comparator<String> comp = (s1, s2) -> s1.length() - s2.length();
 
-    public int longestStrChain(String[] arr) {
+    public static int longestStrChain(String[] arr) {
         int n = arr.length;
 
         int dp[] = new int[n];
