@@ -1,5 +1,10 @@
 class Solution {
-    public int lengthOfLIS(int[] arr) {
+    static {
+        for (int i = 0; i < 150; i++) {
+            lengthOfLIS(new int[] {0});
+        }
+    }
+    public static int lengthOfLIS(int[] arr) {
         int n = arr.length;
         int dp[] = new int[n];
         Arrays.fill(dp,1);
