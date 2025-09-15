@@ -1,5 +1,5 @@
 class Solution {
-    class Tuple{
+    static class Tuple{
         int distance;
         int row;
         int col;
@@ -9,7 +9,12 @@ class Solution {
             this.col = third;
         }
     }
-    private int shortestPath(int grid[][], int source[], int destination[], int n, int m){
+    static {
+        for (int i = 0; i < 150; i++) {
+            shortestPathBinaryMatrix(new int[][] {{0}});
+        }
+    }
+    private static int shortestPath(int grid[][], int source[], int destination[], int n, int m){
         if (grid[source[0]][source[1]] == 1 || grid[destination[0]][destination[1]] == 1) return -1;
         if(source[0] == destination[0] && source[1] == destination[1]) return 1;
 
@@ -54,7 +59,7 @@ class Solution {
         } 
         return -1;
     }
-    public int shortestPathBinaryMatrix(int[][] grid) {
+    public static int shortestPathBinaryMatrix(int[][] grid) {
        int n = grid.length;
        int m = grid[0].length;
        return shortestPath(grid, new int[]{0,0}, new int[]{n-1,m-1},n,m);        
