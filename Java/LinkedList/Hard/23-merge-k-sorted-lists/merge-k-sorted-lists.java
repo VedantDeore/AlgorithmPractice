@@ -10,8 +10,6 @@
  */
 class Solution {
     private ListNode mergerSorted(ListNode head1, ListNode head2){
-        // TC -> o(n1 + n2)
-        // SC -> o(1)
         ListNode dummpyNode = new ListNode(-1);
         ListNode temp = dummpyNode;
         ListNode temp1 = head1;
@@ -28,22 +26,17 @@ class Solution {
                 temp1 = temp1.next;
             }
         }
-
-    
         if(temp1 != null) temp.next = temp1;
         if(temp2 != null) temp.next = temp2;
         
         return dummpyNode.next;
     }
-    private ListNode f(int i, ListNode lists[], ListNode head){
-        if(i == lists.length - 1){
-            return lists[i]; // last list
-        }
-        ListNode mergedhead = f(i+1, lists, lists[i+1]);
-        return mergerSorted(head, mergedhead);
-    }
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists == null || lists.length == 0) return null;
-        return f(0,lists,lists[0]);
+        ListNode head= lists[0];
+        for(int i=1;i<lists.length;i++){
+            head = mergerSorted(head,lists[i]);
+        }
+        return head;
     }
 }
