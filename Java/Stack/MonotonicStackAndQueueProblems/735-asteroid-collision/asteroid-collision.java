@@ -1,22 +1,26 @@
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        List<Integer> stack = new LinkedList<>();
+        int n = asteroids.length;
+        int[] stack = new int[n];
+        int top = -1; 
 
         for (int a : asteroids) {
-            if(a > 0){
-                stack.addLast(a);
-            }else{
-                while (!stack.isEmpty() && stack.getLast() > 0 && stack.getLast() < Math.abs(a)) {
-                    stack.removeLast();
+            if (a > 0) {
+                stack[++top] = a; 
+            } else {    
+                  
+                while (top >= 0 && stack[top] > 0 && stack[top] < Math.abs(a)) {
+                    top--; 
                 }
-
-                if(!stack.isEmpty() && stack.getLast() == Math.abs(a)){
-                    stack.removeLast();
-                }else if(stack.isEmpty() || stack.getLast() <0){
-                    stack.addLast(a);
+                if (top >= 0 && stack[top] == Math.abs(a)) {
+                    top--; 
+                } else if (top == -1 || stack[top] < 0) {
+                    stack[++top] = a; 
                 }
+                
             }
         }
-        return stack.stream().mapToInt(i -> i).toArray();
+
+        return Arrays.copyOf(stack, top + 1);
     }
 }
