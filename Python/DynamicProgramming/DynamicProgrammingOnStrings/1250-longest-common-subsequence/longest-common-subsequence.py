@@ -1,8 +1,10 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+
         n = len(text1)
         m = len(text2)
         prev = [0] *(m+1)
+
 
         for i in range(1,n+1):
             curr = [0] *(m+1)
