@@ -28,7 +28,7 @@ class Solution:
             row = q[0].row
             col = q[0].col
             time = q[0].time
-            timing=time
+            timing= max(timing,time)
             q.popleft()
             for i in range(4):
                 n_row = row + delRow[i]
