@@ -17,15 +17,25 @@ class Solution:
 
         return True
 
+    def dfs(self, node:int, current_color:int, adjList: List[List[int]], color: List[int]):
+        color[node] = current_color
+
+
+        for neighbour in adjList[node]:
+            if(color[neighbour] == -1):
+                if(self.dfs(neighbour, 1-current_color, adjList, color) == False):
+                    return False
+            elif color[neighbour] == current_color:
+                return False
+        
+        return True
 
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        color : List[int] = [-1] * len(graph)
+        color: List[int] = [-1]*len(graph)
 
-        for i in range(len(color)):
-          if(color[i] == -1):
-            if(self.bfs(i, graph,color) == False):
-              return False
-            
+        for i in range(len(graph)):
+            if color[i] == -1:
+                if self.dfs(i, color[i], graph, color) == False:
+                    return False
         
-
         return True
