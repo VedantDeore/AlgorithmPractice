@@ -5,41 +5,57 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def inorder(self,root, currlist,numbers):
-        if(root.right is None and root.left is None):
-            currlist.append(root.val)
-            numbers.append(list(reversed(currlist)))
-            currlist.pop()
+    # def inorder(self,root, currlist,numbers):
+    #     if(root.right is None and root.left is None):
+    #         currlist.append(root.val)
+    #         numbers.append(list(reversed(currlist)))
+    #         currlist.pop()
+    #         return
+
+    #     if root.left:
+    #         currlist.append(root.val)
+    #         self.inorder(root.left, currlist , numbers)
+    #         currlist.pop()
+    #         # print(root.val + " ")
+
+    #     if root.right:
+    #         currlist.append(root.val)
+    #         self.inorder(root.right, currlist , numbers)
+    #         currlist.pop()
+
+    #     return 
+
+    def dfs(self, node, num,ans):
+        if node is None:
             return
+        
+        num += str(node.val)
 
-        if root.left:
-            currlist.append(root.val)
-            self.inorder(root.left, currlist , numbers)
-            currlist.pop()
-            # print(root.val + " ")
-
-        if root.right:
-            currlist.append(root.val)
-            self.inorder(root.right, currlist , numbers)
-            currlist.pop()
-
-        return 
+        if node.left is None and node.right is None:
+            ans[0] += int(num,2)
+        
+        self.dfs(node.left,num,ans)
+        self.dfs(node.right,num,ans)
 
     def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
-        numbers : List[List] = []
+        # numbers : List[List] = []
 
-        self.inorder(root, [], numbers)
+        # self.inorder(root, [], numbers)
 
         
-        ans = 0
-        for i in numbers:
-            print(i)
-            power = 0
-            num = 0
-            for j in i:
-                if j == 1:
-                    num += pow(2,power)
-                power+=1
-            ans += num
+        # ans = 0
+        # for i in numbers:
+        #     print(i)
+        #     power = 0
+        #     num = 0
+        #     for j in i:
+        #         if j == 1:
+        #             num += pow(2,power)
+        #         power+=1
+        #     ans += num
         
-        return ans
+        # return ans
+        ans= [0]
+        self.dfs(root,'', ans)
+
+        return ans[0]
