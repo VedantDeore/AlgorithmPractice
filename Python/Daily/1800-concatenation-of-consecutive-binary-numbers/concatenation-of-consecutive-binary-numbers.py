@@ -1,9 +1,12 @@
 class Solution:
     def concatenatedBinary(self, n: int) -> int:
-        ans = ''
-        MOD= 1000000007
+        ans=0
+        length=0
+        MOD = 10**9 + 7
         for i in range(1,n+1):
-            ans += bin(i)[2:]
+            if i & (i-1) == 0:
+                length +=1
+            
+            ans = ((ans << length) | i)%MOD
 
-
-        return int(ans,2)%MOD
+        return ans
