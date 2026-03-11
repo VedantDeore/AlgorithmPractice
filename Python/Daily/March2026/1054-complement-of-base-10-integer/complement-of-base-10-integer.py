@@ -3,14 +3,11 @@ class Solution:
         if n==0:
             return 1
 
-        ans = 0
-        i=0
-        while n>0:
-            bit = n & 1
-            flipped = 1-bit
-            ans += (2**i * flipped)
-            i+=1
-            n=n>>1
+        mask=0
+        x = n
+        while x>0:
+            mask = (mask <<1) |1
+            x = x>>1
 
-        return ans
+        return mask^n
 
