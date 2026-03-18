@@ -20,7 +20,9 @@ class Solution:
                 # print(grid[i][j], end = "")
                 if grid[i][j] <= k:
                     cnt += 1
-            print()
+                else:
+                    break
+            # print()
 
 
         return cnt
