@@ -77,8 +77,7 @@ class Solution:
     def maxProductPath(self, grid: List[List[int]]) -> int:
         n = len(grid)
         m = len(grid[0])
-        
-        # FIX: Initialize as 2D None so "is not None" works correctly
+    
         dp = [[None for _ in range(m)] for _ in range(n)]
 
         both = [0]*2
