@@ -59,11 +59,19 @@ class Solution:
                     if left[1] != self.neg_inf:
                         left[1] = grid[i][j] * left[1]
 
-                    candidates = up + left 
-                    
-                    valid_candidates = [c for c in candidates if c != self.neg_inf]
+                    all_results = [up[0], up[1], left[0], left[1]]
 
-                    dp[i][j] = [max(valid_candidates), min(valid_candidates)]
+                    current_max = self.neg_inf
+                    current_min = float('inf')
+
+                    for val in all_results:
+                        if val != self.neg_inf:
+                            if val > current_max:
+                                current_max = val
+                            if val < current_min:
+                                current_min = val
+
+                    dp[i][j] = [current_max, current_min]
         
         return dp[i][j]
     def maxProductPath(self, grid: List[List[int]]) -> int:
