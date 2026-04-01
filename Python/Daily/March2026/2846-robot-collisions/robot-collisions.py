@@ -1,18 +1,13 @@
 class Solution:
     def survivedRobotsHealths(self, positions: List[int], healths: List[int], directions: str) -> List[int]:
         if directions.count('L') == len(directions) or directions.count('R') == len(directions):
-            return healths
-
-        
+            return healths     
         robots = {}
         i=0
         for i in range(len(positions)):
             robots[positions[i]] = [healths[i], directions[i], i]
         
         sorted_keys = sorted(robots.keys())
-
-
-
         stack = []
         # print(sorted_k)
 # 
@@ -41,12 +36,7 @@ class Solution:
 
                 if current[0] !=0:
                     reserve.append(current)   
-                    # print("!!!!" , reserve)   
-            
-            
-            
-            
-        
+                    # print("!!!!" , reserve)        
         # print(stack)
         for i in reserve:
             stack.append(i)
