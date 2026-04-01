@@ -15,11 +15,12 @@ class Solution:
 
         stack = []
         # print(sorted_k)
-
+# 
         reserve = []
         for pos in sorted_keys:
             current = robots[pos]
             # print(pos, "", current)
+            # 
             if current[1] == 'R':
                 stack.append(current)
             else:
