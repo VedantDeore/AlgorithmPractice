@@ -6,6 +6,8 @@ class Solution:
 
 
         dist = float('inf')
+        # dist = float('-inf')
+        # dist = float('inf')
         # pos = nums.index(startIndex)
         pos = bisect.bisect_left(nums, startIndex)
 
@@ -26,6 +28,7 @@ class Solution:
         dic = defaultdict(list)
         n = len(nums)
         for i in range(n):
+            
             dic[nums[i]].append(i)
 
         ans = [] 
